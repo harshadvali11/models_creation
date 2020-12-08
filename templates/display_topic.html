@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <center>
+
+        {% if topics %}
+
+        <h1>Displaying the content of Topic model</h1>
+        <table border='1px'>
+            <tr>
+                <th>Topic_name</th>
+            </tr>
+
+            {% for t in topics %}
+
+            <tr>                   
+                <td>{{t.topic_name}}</td>
+            </tr>
+            {% endfor %}
+
+
+        </table>
+
+
+
+
+        {% else %}
+            <h1> NO topics To Display</h1>
+        {% endif %}
+    </center>
+</body>
+</html>

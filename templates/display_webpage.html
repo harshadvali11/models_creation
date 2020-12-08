@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <center>
+        {% if webpages %}
+
+        <h1>Dsipalying te content of Webpage model</h1>
+        <table border='1px'>
+            <tr>
+                <th>Topc_name</th>
+                <th>Name</th>
+                <th>URL</th>
+            </tr>
+                {% for w in webpages %}
+                <tr>
+                    <td>{{w.topic_name}}</td>
+                    <td>{{w.name}}</td>
+                    <td>{{w.url}}</td>
+                </tr>
+            {% endfor %}
+
+        </table>
+
+
+        {% else %}
+        <h1>No webapges to display</h1>
+        {% endif %}
+
+    </center>
+</body>
+</html>
