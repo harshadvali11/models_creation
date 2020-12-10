@@ -3,6 +3,7 @@ from django.shortcuts import render
 # Create your views here.
 from app.models import *
 from django.db.models.functions import Length
+from django.db.models import Count
 from django.db.models import Q
 from django.http import HttpResponse
 
@@ -21,13 +22,18 @@ def display_webpages(request):
     #webpages=Webpage.objects.all().order_by(Length('name').desc())
     #webpages=Webpage.objects.exclude(topic_name='Music')
     #webpages=Webpage.objects.all()[-1]
-    webpages=Webpage.objects.filter(url__startswith='https')
-    webpages=Webpage.objects.filter(url__endswith='org/')
-    webpages=Webpage.objects.filter(name__contains='a')
-    webpages=Webpage.objects.filter(Q(topic_name='Singing') & Q(name='Jacob'))
-    webpages=Webpage.objects.filter(Q(topic_name='Singing'))
-    webpages=Webpage.objects.filter(Q(name__contains='o') & Q(name__endswith='y') & Q(topic_name='Eating'))
-    webpages=Webpage.objects.all()
+    #webpages=Webpage.objects.filter(url__startswith='https')
+    #webpages=Webpage.objects.filter(url__endswith='org/')
+    #webpages=Webpage.objects.filter(name__contains='a')
+    #webpages=Webpage.objects.filter(Q(topic_name='Singing') & Q(name='Jacob'))
+    #webpages=Webpage.objects.filter(Q(topic_name='Singing'))
+    #webpages=Webpage.objects.filter(Q(name__contains='o') & Q(name__endswith='y') & Q(topic_name='Eating'))
+    #webpages=Webpage.objects.all()
+    #webpages=Webpage.objects.filter(url__startswith='https')
+    #webpages=Webpage.objects.filter(name__length=3)
+    #webpages=Webpage.objects.filter(name__in=['Jennifer','Charles'])
+    #webpages=Webpage.objects.filter(name__regex=r'^[a-zA-Z]{2}a')
+
     return render(request,'display_webpage.html',context={'webpages':webpages})
 
 def display_access(request):
@@ -50,7 +56,16 @@ def delete_webpage(request):
     return render(request,'display_webpage.html',context={'webpages':webpages})
 
 
-
+def update_webpage(request):
+    #Webpage.objects.filter(name='Venky').update(url='https://jennifer_OAR.com/',name='Venky',topic_name='Eating')
+    #Webpage.objects.filter(topic_name='Eat').update(name='King Kohli')
+    #Webpage.objects.update_or_create(name='Venky',defaults={'url':'https://Venky_OAR.com/'})
+    #Webpage.objects.update_or_create(name='King Kohli',defaults={'url':'https://KingKohli.com/'})
+    t=Topic.objects.get_or_create(topic_name='Football')[0]
+    Webpage.objects.update_or_create(name='Sehwag',defaults={'url':'https://KingKohli.com/','topic_name':t})
+    
+    webpages=Webpage.objects.all()
+    return render(request,'display_webpage.html',context={'webpages':webpages})
 
 
 

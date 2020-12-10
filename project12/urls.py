@@ -23,5 +23,7 @@ urlpatterns = [
     path('display_access/',views.display_access,name='display_access'),
     path('delete_webpage/',views.delete_webpage,name='delete_webpage'),
     
+    path('update_webpage/',views.update_webpage,name='update_webpage'),
+    
 
 ]
