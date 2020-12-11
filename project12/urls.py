@@ -24,6 +24,6 @@ urlpatterns = [
     path('delete_webpage/',views.delete_webpage,name='delete_webpage'),
     
     path('update_webpage/',views.update_webpage,name='update_webpage'),
-    
+    path('form_create_topic/',views.form_create_topic,name='form_create_topic'),
 
 ]

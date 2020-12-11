@@ -69,6 +69,34 @@ def update_webpage(request):
 
 
 
+def form_create_topic(request):
+    if request.method=="POST":
+        topicname=request.POST['topic']
+        t=Topic.objects.get_or_create(topic_name=topicname)[0]
+        t.save()
+        topics=Topic.objects.all()
+        return render(request,'display_topic.html',context={'topics':topics})
+    return render(request,'form_create_topic.html')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
