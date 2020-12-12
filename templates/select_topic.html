@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <center>
+        <h1>Displaying te dropdown list of topics</h1>
+        <form method="POST" action="{% url 'form_delete_webpage' %}">
+            {% csrf_token %}
+            <label for="topic">Topic_names</label>
+            <select name="topic" id="topic">
+                {% for topic in topics %}
+                    <option value="{{topic}}">{{topic.topic_name}}</option>
+                {% endfor %}
+
+            </select>
+            <br>
+            <input type="submit" value="Submit">
+        </form>
+    </center>
+</body>
+</html>

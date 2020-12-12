@@ -25,5 +25,11 @@ urlpatterns = [
     
     path('update_webpage/',views.update_webpage,name='update_webpage'),
     path('form_create_topic/',views.form_create_topic,name='form_create_topic'),
+    path('form_create_webpage/',views.form_create_webpage,name='form_create_webpage'),
+    path('form_update_webpage/',views.form_update_webpage,name='form_update_webpage'),
+    
+    path('form_delete_webpage/',views.form_delete_webpage,name='form_delete_webpage'),
+    
+    path('select_topic/',views.select_topic,name='select_topic'),
 
 ]

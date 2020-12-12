@@ -80,11 +80,45 @@ def form_create_topic(request):
 
 
 
+def form_create_webpage(request):
+    if request.method=="POST":
+        topic=request.POST['topic']
+        name=request.POST.get('name')
+        url=request.POST['url']
+        t=Topic.objects.get_or_create(topic_name=topic)[0]
+        t.save()
+        w=Webpage.objects.get_or_create(topic_name=t,name=name,url=url)[0]
+        w.save()
+        webpages=Webpage.objects.all()
+        return render(request,'display_webpage.html',context={'webpages':webpages})
+    return render(request,'form_create_webpage.html')
+
+
+
+def form_update_webpage(request):
+    if request.method=='POST':
+        name=request.POST.get('name')
+        url=request.POST['url']
+        Webpage.objects.filter(name=name).update(url=url)
+        webpages=Webpage.objects.all()
+        return render(request,'display_webpage.html',context={'webpages':webpages})
+    return render(request,'form_update_webpage.html')
+
+
+def form_delete_webpage(request):
+    if request.method=='POST':
+        topicname=request.POST['topic']
+        Webpage.objects.filter(topic_name=topicname).delete()
+        webpages=Webpage.objects.all()
+        return render(request,'display_webpage.html',context={'webpages':webpages})
+    return render(request,'form_delete_webpage.html')
 
 
 
 
-
+def select_topic(request):
+    topics=Topic.objects.all()
+    return render(request,'select_topic.html',context={'topics':topics})
 
 
 
