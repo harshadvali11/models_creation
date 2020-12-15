@@ -122,13 +122,33 @@ def select_topic(request):
 
 
 
+def form_display_webpage(request):
+    if request.method=="POST":
+        topicname=request.POST.get('topic')
+        webpages=Webpage.objects.filter(topic_name=topicname)
+        return render(request,'display_webpage.html',context={'webpages':webpages})
+    return render(request,'form_display_webpage.html')
+
+
+def multi_select(request):
+    topics=Topic.objects.all()
+    if request.method=="POST":
+        selected_topics=request.POST.getlist('topic')
+        #print(selected_topics)
+        webpages=Webpage.objects.none()
+        for i in selected_topics:
+            webpages=webpages | Webpage.objects.filter(topic_name=i)
+        return render(request,'display_webpage.html',context={'webpages':webpages})
+    return render(request,'multi_select.html',context={'topics':topics})
 
 
 
 
 
 
-
+def checkbox(request):
+    topics=Topic.objects.all()
+    return render(request,'checkbox.html',context={'topics':topics})
 
 
 

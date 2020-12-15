@@ -31,5 +31,11 @@ urlpatterns = [
     path('form_delete_webpage/',views.form_delete_webpage,name='form_delete_webpage'),
     
     path('select_topic/',views.select_topic,name='select_topic'),
+    path('form_display_webpage/',views.form_display_webpage,name='form_display_webpage'),
+    
+    path('multi_select/',views.multi_select,name='multi_select'),
+    
+    path('checkbox/',views.checkbox,name='checkbox'),
+
 
 ]
