@@ -39,3 +39,18 @@ urlpatterns = [
 
 
 ]
+
+
+admin.site.site_header='Class @7AM'
+
+admin.site.site_title='Class ends @ 9AM'
+
+
+admin.site.index_title='Class is Going on'
+
+
+
+
+
+
+
